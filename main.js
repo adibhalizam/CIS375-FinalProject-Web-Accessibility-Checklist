@@ -15,30 +15,26 @@ document.addEventListener('DOMContentLoaded', function() {
     let category2Applicable = true;
     let category3Applicable = true;
 
-    const applicable1 = document.getElementById('na1');
-    // const applicable2 = document.getElementById('na2');
-    // const applicable3 = document.getElementById('na3');
-
+    const radioApplicable1 = document.getElementById('applicable1');
+    const radioApplicable2 = document.getElementById('notApplicable1');
     
-    applicable1.addEventListener('click', function() {
-        if (category1Applicable == true) {
-            for (let i = 0; i < allCategory1.length; i++) {
-                allCategory1[i].disabled = true;
-            }
-            category1Applicable = false;
-            total1 = 0;
-            return;
+    radioApplicable1.addEventListener('click', function() {
+        for (let i = 0; i < allCategory1.length; i++) {
+            allCategory1[i].disabled = false;
         }
-        else {
-            for (let i = 0; i < allCategory1.length; i++) {
-                allCategory1[i].disabled = false;
-            }
-            category1Applicable = true;
-            total1 = allCategory1.length;
-            return;
-        }
+        category1Applicable = true;
+        total1 = allCategory1.length;
+        return;
     });
 
+    radioApplicable2.addEventListener('click', function() {
+        for (let i = 0; i < allCategory1.length; i++) {
+            allCategory1[i].disabled = true;
+        }
+        category1Applicable = false;
+        total1 = 0;
+        return;
+    });
 
     button.addEventListener('click', function() {
         let check1 = 0;
