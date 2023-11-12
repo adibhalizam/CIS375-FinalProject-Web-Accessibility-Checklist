@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let totalCategory = [5, 3];
+    let totalCategory = [5, 3, 3, 4, 3];
     let totalSemanticElements = 0;
     let totalTextAlternatives = 0;
+    let totalKeyboardAccessibility = 0;
+    let totalSizeSpacing = 0;
+    let totalColorContrast = 0;
     const numCategory1 = 5;
     const numCategory2 = 3;
+    const numCategory3 = 3;
+    const numCategory4 = 4;
+    const numCategory5 = 3;
 
     const button = document.getElementById('submit');
     button.addEventListener('click', function () {
@@ -25,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         totalSemanticElements = calculateTotalForCategory(numCategory1, 1);
         totalTextAlternatives = calculateTotalForCategory(numCategory2, 2);
+        totalKeyboardAccessibility = calculateTotalForCategory(numCategory3, 3);
+        totalSizeSpacing = calculateTotalForCategory(numCategory4, 4);
+        totalColorContrast = calculateTotalForCategory(numCategory5, 5);
 
         if (totalCategory[0] === 0)
             totalSemanticElements = "Not Applicable";
@@ -34,11 +43,26 @@ document.addEventListener('DOMContentLoaded', function () {
             totalTextAlternatives = "Not Applicable";
         else 
             totalTextAlternatives = `${totalTextAlternatives}/${totalCategory[1]}`;
+        if (totalCategory[2] === 0)
+            totalKeyboardAccessibility = "Not Applicable";
+        else 
+            totalKeyboardAccessibility = `${totalKeyboardAccessibility}/${totalCategory[2]}`;
+        if (totalCategory[3] === 0)
+            totalSizeSpacing = "Not Applicable";
+        else 
+            totalSizeSpacing = `${totalSizeSpacing}/${totalCategory[3]}`;
+        if (totalCategory[4] === 0)
+            totalColorContrast = "Not Applicable";
+        else 
+            totalColorContrast = `${totalColorContrast}/${totalCategory[4]}`;
 
 
         window.location.href = 'result.html';
         localStorage.setItem('totalSemanticElements', totalSemanticElements);
         localStorage.setItem('totalTextAlternatives', totalTextAlternatives);
+        localStorage.setItem('totalKeyboardAccessibility', totalKeyboardAccessibility);
+        localStorage.setItem('totalSizeSpacing', totalSizeSpacing);
+        localStorage.setItem('totalColorContrast', totalColorContrast);
         // const resultSection = document.getElementById('finalResult');
         // if (totalCategory[0] === 0)
         //     totalSemanticElements = "Not Applicable";

@@ -17,17 +17,26 @@
         document.addEventListener('DOMContentLoaded', function() {
             const totalSemanticElements = localStorage.getItem('totalSemanticElements');
             const totalTextAlternatives = localStorage.getItem('totalTextAlternatives');
+            const totalKeyboardAccessibility = localStorage.getItem('totalKeyboardAccessibility');
+            const totalSizeSpacing = localStorage.getItem('totalSizeSpacing');
+            const totalColorContrast = localStorage.getItem('totalColorContrast');
 
             // Display results on the page
             const resultContainer = document.getElementById('resultContainer');
             resultContainer.innerHTML =
                 "Accessibility Score : " + "<br>" +
                 "Semantic Element : " + totalSemanticElements + "<br>" +
-                "Text Alternative : " + totalTextAlternatives;
+                "Text Alternative : " + totalTextAlternatives + "<br>" +
+                "Keyboard Accessibility : " + totalKeyboardAccessibility + "<br>" +
+                "Text Size and Spacing : " + totalSizeSpacing + "<br>" +
+                "Color Contrast : " + totalColorContrast + "<br>";
 
             // Clear localStorage after displaying results
             localStorage.removeItem('totalSemanticElements');
             localStorage.removeItem('totalTextAlternatives');
+            localStorage.removeItem('totalKeyboardAccessibility');
+            localStorage.removeItem('totalSizeSpacing');
+            localStorage.removeItem('totalColorContrast');
         });
     </script>
 </body>
