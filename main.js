@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let totalCategory = [5, 3, 3, 4, 3];
+    let totalCategoryQuestions = [5, 3, 3, 4, 3];
     let totalSemanticElements = 0;
     let totalTextAlternatives = 0;
     let totalKeyboardAccessibility = 0;
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (selectedValue === "0") {
                     // Do nothing for 0
                 } else if (selectedValue === "na") {
-                    totalCategory[category - 1] -= 1;
+                    totalCategoryQuestions[category - 1] -= 1;
                 }
             }
             return score;
@@ -35,26 +35,26 @@ document.addEventListener('DOMContentLoaded', function () {
         totalSizeSpacing = calculateTotalForCategory(numCategory4, 4);
         totalColorContrast = calculateTotalForCategory(numCategory5, 5);
 
-        if (totalCategory[0] === 0)
+        if (totalCategoryQuestions[0] === 0)
             totalSemanticElements = "Not Applicable";
         else
-            totalSemanticElements = `${totalSemanticElements}/${totalCategory[0]}`;
-        if (totalCategory[1] === 0)
+            totalSemanticElements = `${totalSemanticElements}/${totalCategoryQuestions[0]}`;
+        if (totalCategoryQuestions[1] === 0)
             totalTextAlternatives = "Not Applicable";
         else 
-            totalTextAlternatives = `${totalTextAlternatives}/${totalCategory[1]}`;
-        if (totalCategory[2] === 0)
+            totalTextAlternatives = `${totalTextAlternatives}/${totalCategoryQuestions[1]}`;
+        if (totalCategoryQuestions[2] === 0)
             totalKeyboardAccessibility = "Not Applicable";
         else 
-            totalKeyboardAccessibility = `${totalKeyboardAccessibility}/${totalCategory[2]}`;
-        if (totalCategory[3] === 0)
+            totalKeyboardAccessibility = `${totalKeyboardAccessibility}/${totalCategoryQuestions[2]}`;
+        if (totalCategoryQuestions[3] === 0)
             totalSizeSpacing = "Not Applicable";
         else 
-            totalSizeSpacing = `${totalSizeSpacing}/${totalCategory[3]}`;
-        if (totalCategory[4] === 0)
+            totalSizeSpacing = `${totalSizeSpacing}/${totalCategoryQuestions[3]}`;
+        if (totalCategoryQuestions[4] === 0)
             totalColorContrast = "Not Applicable";
         else 
-            totalColorContrast = `${totalColorContrast}/${totalCategory[4]}`;
+            totalColorContrast = `${totalColorContrast}/${totalCategoryQuestions[4]}`;
 
 
         window.location.href = 'result.html';
@@ -64,14 +64,14 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('totalSizeSpacing', totalSizeSpacing);
         localStorage.setItem('totalColorContrast', totalColorContrast);
         // const resultSection = document.getElementById('finalResult');
-        // if (totalCategory[0] === 0)
+        // if (totalCategoryQuestions[0] === 0)
         //     totalSemanticElements = "Not Applicable";
         // else
-        //     totalSemanticElements = `${totalSemanticElements}/${totalCategory[0]}`;
-        // if (totalCategory[1] === 0)
+        //     totalSemanticElements = `${totalSemanticElements}/${totalCategoryQuestions[0]}`;
+        // if (totalCategoryQuestions[1] === 0)
         //     totalTextAlternatives = "Not Applicable";
         // else 
-        //     totalTextAlternatives = `${totalTextAlternatives}/${totalCategory[1]}`;
+        //     totalTextAlternatives = `${totalTextAlternatives}/${totalCategoryQuestions[1]}`;
         // resultSection.innerHTML = "Accessibility Score : " + "<br>" +
         //     "Semantic Element : " + totalSemanticElements + "<br>" +
         //     "Text Alternative : " + totalTextAlternatives;
