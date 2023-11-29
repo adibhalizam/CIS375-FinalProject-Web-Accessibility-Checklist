@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Result</title>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div>
+        <div id="resultContainer">
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalSemanticElements = localStorage.getItem('totalSemanticElements');
+            const totalTextAlternatives = localStorage.getItem('totalTextAlternatives');
+            const totalKeyboardAccessibility = localStorage.getItem('totalKeyboardAccessibility');
+            const totalSizeSpacing = localStorage.getItem('totalSizeSpacing');
+            const totalColorContrast = localStorage.getItem('totalColorContrast');
+            const totalActualScore = localStorage.getItem('totalActualScore');
+            const totalPossibleScore = localStorage.getItem('totalPossibleScore');
+            const overallPercentage = localStorage.getItem('overallPercentage');
+            const description = localStorage.getItem('description');
+
+            // Display results on the page
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML =
+                "Accessibility Score : " + "<br>" +
+                "Semantic Element : " + totalSemanticElements + "<br>" +
+                "Text Alternative : " + totalTextAlternatives + "<br>" +
+                "Keyboard Accessibility : " + totalKeyboardAccessibility + "<br>" +
+                "Text Size and Spacing : " + totalSizeSpacing + "<br>" +
+                "Color Contrast : " + totalColorContrast + "<br>" +
+                "Total Score : " + totalActualScore + "/" + totalPossibleScore + "<br>" +
+                "Accessibility Score: " + overallPercentage + "%" + "<br>" +
+                "Description: " + description + "<br>";
+
+            // Clear localStorage after displaying results
+            localStorage.removeItem('totalSemanticElements');
+            localStorage.removeItem('totalTextAlternatives');
+            localStorage.removeItem('totalKeyboardAccessibility');
+            localStorage.removeItem('totalSizeSpacing');
+            localStorage.removeItem('totalColorContrast');
+            localStorage.removeItem('totalActualScore');
+            localStorage.removeItem('totalPossibleScore');
+            localStorage.removeItem('overallPercentage');
+            localStorage.removeItem('description');
+        });
+    </script>
+</body>
+</html>
