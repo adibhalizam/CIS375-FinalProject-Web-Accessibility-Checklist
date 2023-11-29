@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const rangeIndex = Math.floor((overallPercentage - 1) / 25);
         const description = descriptions[rangeIndex];
 
-        window.location.href = 'result.html';
+        window.location.href = 'result1.html';
 
         localStorage.setItem('totalSemanticElements', `${totalSemanticElements}/${result1.applicableQuestions}`);
         localStorage.setItem('totalTextAlternatives', `${totalTextAlternatives}/${result2.applicableQuestions}`);
