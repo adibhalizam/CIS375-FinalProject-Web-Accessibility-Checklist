@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Page</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+
+<body>
+    <header>
+        <h1>Help</h1>
+        <p>Navigate the Web Accessibility Checklist with Ease</p>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Checklist</a></li>
+            <li><a href="https://www.w3.org/TR/WCAG21/">Resources</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2 class="title">Frequently Asked Questions</h2>
+
+        <button class="accordion">What is web accessibility?</button>
+        <div class="panel">
+            <p>Accessibility, in the context of the web and digital content, refers to the design and development
+                practices that ensure everyone, including people with disabilities, can freely access and interact with
+                web content. It is about making the web usable for as many people as possible, regardless of their
+                abilities or disabilities.</p>
+            <p>Accessibility takes into account all forms of disabilities — including visual, auditory, physical,
+                speech, cognitive, and neurological disabilities. The goal is to create a web experience that's flexible
+                and accommodating to different users' needs and preferences. This includes creating content that's
+                readable and understandable and ensuring functionalities can be operated by everyone.</p>
+            <p>In simple terms, web accessibility ensures an equal and inclusive web experience for everyone.</p>
+        </div>
+
+        <button class="accordion">Why is web accessibility important?</button>
+        <div class="panel">
+            <p>Web accessibility is important because it ensures that all users, regardless of their abilities, have
+                equal access to information and functionality on the internet.</p>
+        </div>
+
+        <button class="accordion">How to use this checklist?</button>
+        <div class="panel">
+            <p>The Web Accessibility Checklist is easy to use. Simply access the "Checklist" page and follow each item
+                on the list.
+                Each item has a description and a checkbox for you to mark. Ensure all items are marked to have a fully
+                accessible website.</p>
+        </div>
+
+        <button class="accordion">What aspects are being assessed in the Checklist?</button>
+        <div class="panel">
+            <p>The Web Accessibility Checklist aims to address key aspects underlined by Web Content Accessibility Guidelines (WCAG) for creating an inclusive digital experience. These involve:</p>
+            <ul>
+                <li><strong>Semantic Elements:</strong> The usage of correct HTML elements for their given purpose to provide important context to screen readers and other assistive technologies.</li>
+                <li><strong>Text Alternatives for Images and Multimedia:</strong> Ensuring that descriptive alt text is provided for images, and captions or transcripts are provided for audio and video content.</li>
+                <li><strong>Keyboard Accessibility:</strong> Allowing websites to be fully navigable using only a keyboard, which is crucial for users who cannot use a mouse or a similar pointing device.</li>
+                <li><strong>Text Size and Spacing:</strong> Ensuring the text is large enough and spaced appropriately to be legible and easy to read.</li>
+                <li><strong>Color Contrast:</strong> Ensuring there is enough contrast between the text color and its background, making it easier to read for users with moderately low vision.</li>
+            </ul>
+            <p>By addressing these critical elements, your website would be better designed for accessibility, improving the web experience for all of your users.</p>
+        </div>
+
+        <button class="accordion">What is WCAG?</button>
+        <div class="panel">
+            <p>If you wish to delve deeper into web accessibility, please visit our "Resources" page. Our resources
+                contain a direct link to the <strong>Web Content Accessibility Guidelines (WCAG)</strong>, a set of
+                recommendations for making web content more accessible. </p>
+            <p>The WCAG are part of an international series of web accessibility guidelines published by the World Wide
+                Web Consortium (W3C), the main international standards organization for the Internet. They provide a
+                detailed framework for creating an inclusive web experience ensuring all users, including those with
+                disabilities, can effectively use and interact with web content.</p>
+        </div>
+
+        <div id="videoSection">
+            <h2 class="title">Related Video</h2>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/FsGussrOX60" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!-- <section id="what-is-accessibility">
+            <h2>What is Accessibility</h2>
+            <p>Accessibility, in the context of the web and digital content, refers to the design and development
+                practices that ensure everyone, including people with disabilities, can freely access and interact with
+                web content. It is about making the web usable for as many people as possible, regardless of their
+                abilities or disabilities.</p>
+            <p>Accessibility takes into account all forms of disabilities — including visual, auditory, physical,
+                speech, cognitive, and neurological disabilities. The goal is to create a web experience that's flexible
+                and accommodating to different users' needs and preferences. This includes creating content that's
+                readable and understandable and ensuring functionalities can be operated by everyone.</p>
+            <p>In simple terms, web accessibility ensures an equal and inclusive web experience for everyone.</p>
+        </section>
+
+        <section id="how-to-use">
+            <h2>How to Use the checklist</h2>
+            <p>The Web Accessibility Checklist is easy to use. Simply access the "Checklist" page and follow each item
+                on the list.
+                Each item has a description and a checkbox for you to mark. Ensure all items are marked to have a fully
+                accessible website.</p>
+        </section>
+
+        <section id="extra-information">
+            <h2>Additional Information</h2>
+            <p>If you wish to delve deeper into web accessibility, please visit our "Resources" page. Our resources
+                contain a direct link to the <strong>Web Content Accessibility Guidelines (WCAG)</strong>, a set of
+                recommendations for making web content more accessible. </p>
+            <p>The WCAG are part of an international series of web accessibility guidelines published by the World Wide
+                Web Consortium (W3C), the main international standards organization for the Internet. They provide a
+                detailed framework for creating an inclusive web experience ensuring all users, including those with
+                disabilities, can effectively use and interact with web content.</p>
+        </section> -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Web Accessibility Checklist. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

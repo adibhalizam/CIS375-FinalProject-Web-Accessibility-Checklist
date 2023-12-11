@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Accessibility Checklist</title>
-    <script src="main1.js"></script>
+    <title>Checklist Page</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
-    <div>
-        <h1>Web Accessibility Checklist</h1>
-    </div>
+<body id="indexbody">
 
-    <div>
+    <header class="indexH">
+         <h1>Web Accessibility Checklist</h1>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Checklist</a></li>
+            <li><a href="https://www.w3.org/TR/WCAG21/">Resources</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <div class = "text">
         <h2>Semantic Elements</h2>
         <h3>Use semantic HTML elements for content structure</h3>
         <input type="radio" name="category1_1" value="1" id="yes">
@@ -194,14 +205,19 @@
         <br>
 
     </div>
-    
-    <div>
-        <button id="submit">submit</button>
+
+
+    <div id="submit">
+        <button class="submit-button">submit</button>
         <!-- <input type="submit" name="submit" value="submit"> -->
     </div>
+    <br>
+    <br>
     <div id="finalResult">
         
     </div>
 
+    <br>
+    <br>
 </body>
 </html>

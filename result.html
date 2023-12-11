@@ -3,14 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessibility Result</title>
+    <title>Accessibiity Results</title>
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="result.css">
 </head>
 <body>
+
+    <header class="indexH">
+        <h1>Web Accessibility Checklist</h1>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Checklist</a></li>
+            <li><a href="https://www.w3.org/TR/WCAG21/">Resources</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
     <div>
         <div id="resultContainer">
 
         </div>
+        <button id="downloadButton">Download Results</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalSemanticElements = localStorage.getItem('totalSemanticElements');
+            const totalTextAlternatives = localStorage.getItem('totalTextAlternatives');
+            const totalKeyboardAccessibility = localStorage.getItem('totalKeyboardAccessibility');
+            const totalSizeSpacing = localStorage.getItem('totalSizeSpacing');
+            const totalColorContrast = localStorage.getItem('totalColorContrast');
+            const totalActualScore = localStorage.getItem('totalActualScore');
+            const totalPossibleScore = localStorage.getItem('totalPossibleScore');
+            const overallPercentage = localStorage.getItem('overallPercentage');
+            const description = localStorage.getItem('description');
+
+            // Display results in a table
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML =
+                `<table border="1">
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>Semantic Element</td>
+                        <td>${totalSemanticElements}</td>
+                    </tr>
+                    <tr>
+                        <td>Text Alternative</td>
+                        <td>${totalTextAlternatives}</td>
+                    </tr>
+                    <tr>
+                        <td>Keyboard Accessibility</td>
+                        <td>${totalKeyboardAccessibility}</td>
+                    </tr>
+                    <tr>
+                        <td>Text Size and Spacing</td>
+                        <td>${totalSizeSpacing}</td>
+                    </tr>
+                    <tr>
+                        <td>Color Contrast</td>
+                        <td>${totalColorContrast}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Checklist Score</td>
+                        <td>${totalActualScore}/${totalPossibleScore}</td>
+                    </tr>
+                    <tr>
+                        <td><Strong>Accessibility Percentage</Strong></td>
+                        <td><Strong>${overallPercentage}%</Strong></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>${description}</td>
+                    </tr>
+                </table>`;
+
+                const downloadButton = document.getElementById('downloadButton');
+                downloadButton.addEventListener('click', function () {
+
+                    // Capture the table structure using html2canvas
+                    html2canvas(resultContainer).then((canvas) => {
+                        var imgData = canvas.toDataURL('image/png');
+                        var doc = new jsPDF('p', 'mm', 'a4');
+                        doc.addImage(imgData, 'PNG', 10, 10);
+                        doc.save('accessibility_results.pdf'); 
+                    });
+                });
+
+            // Clear localStorage after displaying results
+            // localStorage.removeItem('totalSemanticElements');
+            // localStorage.removeItem('totalTextAlternatives');
+            // localStorage.removeItem('totalKeyboardAccessibility');
+            // localStorage.removeItem('totalSizeSpacing');
+            // localStorage.removeItem('totalColorContrast');
+            // localStorage.removeItem('totalActualScore');
+            // localStorage.removeItem('totalPossibleScore');
+            // localStorage.removeItem('overallPercentage');
+            // localStorage.removeItem('description');
+        });
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Result</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js" defer></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="Styling.css">
+</head>
+<body>
+
+    <header class="indexH">
+        <h1>Web Accessibility Checklist</h1>
+   </header>
+
+    <div>
+        <div id="resultContainer">
+
+        </div>
+        <button id="downloadButton">Download Results</button>
     </div>
 
     <script>
@@ -20,16 +154,59 @@
             const totalKeyboardAccessibility = localStorage.getItem('totalKeyboardAccessibility');
             const totalSizeSpacing = localStorage.getItem('totalSizeSpacing');
             const totalColorContrast = localStorage.getItem('totalColorContrast');
+            const totalActualScore = localStorage.getItem('totalActualScore');
+            const totalPossibleScore = localStorage.getItem('totalPossibleScore');
+            const overallPercentage = localStorage.getItem('overallPercentage');
+            const description = localStorage.getItem('description');
 
-            // Display results on the page
+
+            // Display results in a table
             const resultContainer = document.getElementById('resultContainer');
             resultContainer.innerHTML =
-                "Accessibility Score : " + "<br>" +
-                "Semantic Element : " + totalSemanticElements + "<br>" +
-                "Text Alternative : " + totalTextAlternatives + "<br>" +
-                "Keyboard Accessibility : " + totalKeyboardAccessibility + "<br>" +
-                "Text Size and Spacing : " + totalSizeSpacing + "<br>" +
-                "Color Contrast : " + totalColorContrast + "<br>";
+                `<table border="1">
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>Semantic Element</td>
+                        <td>${totalSemanticElements}</td>
+                    </tr>
+                    <tr>
+                        <td>Text Alternative</td>
+                        <td>${totalTextAlternatives}</td>
+                    </tr>
+                    <tr>
+                        <td>Keyboard Accessibility</td>
+                        <td>${totalKeyboardAccessibility}</td>
+                    </tr>
+                    <tr>
+                        <td>Text Size and Spacing</td>
+                        <td>${totalSizeSpacing}</td>
+                    </tr>
+                    <tr>
+                        <td>Color Contrast</td>
+                        <td>${totalColorContrast}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Score</td>
+                        <td>${totalActualScore}/${totalPossibleScore}</td>
+                    </tr>
+                    <tr>
+                        <td>Accessibility Score</td>
+                        <td>${overallPercentage}%</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>${description}</td>
+                    </tr>
+                </table>`;
+
+              // Add click event listener to the download button
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.addEventListener('click', function () {
+                downloadTableAsPDF('accessibility_results.pdf', resultContainer);
+            });
 
             // Clear localStorage after displaying results
             localStorage.removeItem('totalSemanticElements');
@@ -37,7 +214,20 @@
             localStorage.removeItem('totalKeyboardAccessibility');
             localStorage.removeItem('totalSizeSpacing');
             localStorage.removeItem('totalColorContrast');
+            localStorage.removeItem('totalActualScore');
+            localStorage.removeItem('totalPossibleScore');
+            localStorage.removeItem('overallPercentage');
+            localStorage.removeItem('description');
         });
+
+
+        function downloadTableAsPDF(fileName, container) {
+            const pdf = new jsPDF();
+            pdf.autoTable({ html: container });
+            pdf.save(fileName);
+        }
+
     </script>
 </body>
 </html>
+-->

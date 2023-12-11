@@ -1,10 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     let totalCategoryQuestions = [5, 3, 3, 4, 3];
-    let totalSemanticElements = 0;
-    let totalTextAlternatives = 0;
-    let totalKeyboardAccessibility = 0;
-    let totalSizeSpacing = 0;
-    let totalColorContrast = 0;
     const numCategory1 = 5;
     const numCategory2 = 3;
     const numCategory3 = 3;
@@ -16,141 +11,77 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Button clicked');
         const calculateTotalForCategory = (numQuestions, category) => {
             let score = 0;
+            let applicableQuestions = numQuestions;
             for (let question = 1; question <= numQuestions; question++) {
                 const selectedValue = document.querySelector(`input[name="category${category}_${question}"]:checked`).value;
                 if (selectedValue === "1") {
                     score += 1;
-                } else if (selectedValue === "0") {
-                    // Do nothing for 0
                 } else if (selectedValue === "na") {
-                    totalCategoryQuestions[category - 1] -= 1;
+                    applicableQuestions -= 1;
                 }
             }
-            return score;
+            return { score, applicableQuestions };
         };
 
-        totalSemanticElements = calculateTotalForCategory(numCategory1, 1);
-        totalTextAlternatives = calculateTotalForCategory(numCategory2, 2);
-        totalKeyboardAccessibility = calculateTotalForCategory(numCategory3, 3);
-        totalSizeSpacing = calculateTotalForCategory(numCategory4, 4);
-        totalColorContrast = calculateTotalForCategory(numCategory5, 5);
+        const result1 = calculateTotalForCategory(numCategory1, 1);
+        const result2 = calculateTotalForCategory(numCategory2, 2);
+        const result3 = calculateTotalForCategory(numCategory3, 3);
+        const result4 = calculateTotalForCategory(numCategory4, 4);
+        const result5 = calculateTotalForCategory(numCategory5, 5);
 
-        if (totalCategoryQuestions[0] === 0)
+        let totalSemanticElements = result1.score;
+        let totalTextAlternatives = result2.score;
+        let totalKeyboardAccessibility = result3.score;
+        let totalSizeSpacing = result4.score;
+        let totalColorContrast = result5.score;
+
+        if (result1.applicableQuestions === 0)
             totalSemanticElements = "Not Applicable";
         else
-            totalSemanticElements = `${totalSemanticElements}/${totalCategoryQuestions[0]}`;
-        if (totalCategoryQuestions[1] === 0)
+            totalSemanticElements = `${result1.score}/${result1.applicableQuestions}`;
+        if (result2.applicableQuestions === 0)
             totalTextAlternatives = "Not Applicable";
         else 
-            totalTextAlternatives = `${totalTextAlternatives}/${totalCategoryQuestions[1]}`;
-        if (totalCategoryQuestions[2] === 0)
+            totalTextAlternatives = `${result2.score}/${result2.applicableQuestions}`;
+        if (result3.applicableQuestions === 0)
             totalKeyboardAccessibility = "Not Applicable";
         else 
-            totalKeyboardAccessibility = `${totalKeyboardAccessibility}/${totalCategoryQuestions[2]}`;
-        if (totalCategoryQuestions[3] === 0)
+            totalKeyboardAccessibility = `${result3.score}/${result3.applicableQuestions}`;
+        if (result4.applicableQuestions === 0)
             totalSizeSpacing = "Not Applicable";
         else 
-            totalSizeSpacing = `${totalSizeSpacing}/${totalCategoryQuestions[3]}`;
-        if (totalCategoryQuestions[4] === 0)
+            totalSizeSpacing = `${result4.score}/${result4.applicableQuestions}`;
+        if (result5.applicableQuestions === 0)
             totalColorContrast = "Not Applicable";
         else 
-            totalColorContrast = `${totalColorContrast}/${totalCategoryQuestions[4]}`;
+            totalColorContrast = `${result5.score}/${result5.applicableQuestions}`;
 
+        const totalApplicableQuestions = result1.applicableQuestions + result2.applicableQuestions + result3.applicableQuestions + result4.applicableQuestions + result5.applicableQuestions;
+
+        const totalActualScore = result1.score + result2.score + result3.score + result4.score + result5.score;
+
+        const overallPercentage = ((totalActualScore / totalApplicableQuestions) * 100).toFixed(2);
+
+        const descriptions = [
+            "0-25% - Your website needs significant improvements to meet accessibility standards.",
+            "26-50% - There is room for improvement to enhance accessibility.",
+            "51-75% - Your website shows good accessibility practices, but there's still room for enhancement.",
+            "76-100% - Your website has excellent accessibility practices and is close to meeting all standards."
+        ];
+
+        const rangeIndex = Math.floor((overallPercentage - 1) / 25);
+        const description = descriptions[rangeIndex];
 
         window.location.href = 'result.html';
+
         localStorage.setItem('totalSemanticElements', totalSemanticElements);
         localStorage.setItem('totalTextAlternatives', totalTextAlternatives);
         localStorage.setItem('totalKeyboardAccessibility', totalKeyboardAccessibility);
         localStorage.setItem('totalSizeSpacing', totalSizeSpacing);
         localStorage.setItem('totalColorContrast', totalColorContrast);
-        // const resultSection = document.getElementById('finalResult');
-        // if (totalCategoryQuestions[0] === 0)
-        //     totalSemanticElements = "Not Applicable";
-        // else
-        //     totalSemanticElements = `${totalSemanticElements}/${totalCategoryQuestions[0]}`;
-        // if (totalCategoryQuestions[1] === 0)
-        //     totalTextAlternatives = "Not Applicable";
-        // else 
-        //     totalTextAlternatives = `${totalTextAlternatives}/${totalCategoryQuestions[1]}`;
-        // resultSection.innerHTML = "Accessibility Score : " + "<br>" +
-        //     "Semantic Element : " + totalSemanticElements + "<br>" +
-        //     "Text Alternative : " + totalTextAlternatives;
+        localStorage.setItem('totalActualScore', totalActualScore);
+        localStorage.setItem('totalPossibleScore', totalApplicableQuestions);
+        localStorage.setItem('overallPercentage', overallPercentage);
+        localStorage.setItem('description', description);
     });
 });
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     let allCategory1 = document.querySelectorAll('input[type="checkbox"][value="category1"]');
-//     let allCategory2 = document.querySelectorAll('input[type="checkbox"][value="category2"]');
-//     let allCategory3 = document.querySelectorAll('input[type="checkbox"][value="category3"]');
-
-//     let total1 = allCategory1.length;
-//     let total2 = allCategory2.length;
-//     let total3 = allCategory3.length;
-
-//     const button = document.getElementById('submit');
-
-//     let resultSection = document.getElementById('finalResult');
-
-//     let category1Applicable = true;
-//     let category2Applicable = true;
-//     let category3Applicable = true;
-
-//     const radioApplicable2_1 = document.getElementById('applicable2');
-//     const radioApplicable2_2 = document.getElementById('notApplicable2');
-    
-//     radioApplicable2_1.addEventListener('click', function() {
-//         for (let i = 0; i < allCategory2.length; i++) {
-//             allCategory2[i].disabled = false;
-//         }
-//         category2Applicable = true;
-//         total2 = allCategory1.length;
-//         return;
-//     });
-
-//     radioApplicable2_2.addEventListener('click', function() {
-//         for (let i = 0; i < allCategory2.length; i++) {
-//             allCategory2[i].disabled = true;
-//         }
-//         category2Applicable = false;
-//         total2 = 0;
-//         return;
-//     });
-
-//     button.addEventListener('click', function() {
-//         let check1 = 0;
-//         let check2 = 0;
-//         let check3 = 0;
-//         let resultScore = 0;
-//         if(category1Applicable == true) {
-//             for (let i = 0; i < allCategory1.length; i++) {
-//                 if(allCategory1[i].checked) {
-//                     check1++;
-//                 }
-//             }
-//         }
-
-//         if(category2Applicable == true) {
-//             for (let i = 0; i < allCategory2.length; i++) {
-//                 if(allCategory2[i].checked) {
-//                     check2++;
-//                 }
-//             }
-//         }
-
-//         if(category3Applicable == true) {
-//             for (let i = 0; i < allCategory3.length; i++) {
-//                 if(allCategory3[i].checked) {
-//                     check3++;
-//                 }
-//             }
-//         }
-
-//         let fullScore = total1 + total2 + total3;
-//         resultScore = check1 + check2 + check3;
-//         let percentage = ((resultScore / fullScore) * 100).toFixed(2);
-//         resultSection.innerHTML = "Accessibility Score : " + resultScore + "/" + fullScore +
-//         "<br>" + "Accessibility Percentage : " + percentage + "%";
-
-//     });
-// });
