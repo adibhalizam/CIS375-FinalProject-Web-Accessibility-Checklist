@@ -72,7 +72,8 @@ footer {
 }
 
 .cta-button:hover {
-    background-color: #e6ac00; /* Darker shade for hover */
+    background-color: #00274c;
+    color: #e6ac00;
 }
 
 /* Section Styling */

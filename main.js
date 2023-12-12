@@ -68,8 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
             "51-75% - Your website shows good accessibility practices, but there's still room for enhancement.",
             "76-100% - Your website has excellent accessibility practices and is close to meeting all standards."
         ];
+        
+        let rangeIndex = Math.floor((overallPercentage - 1) / 25);
 
-        const rangeIndex = Math.floor((overallPercentage - 1) / 25);
+        if (totalActualScore == 0 && totalApplicableQuestions != 0) {
+            rangeIndex = 0;
+        }
         const description = descriptions[rangeIndex];
 
         window.location.href = 'result.html';

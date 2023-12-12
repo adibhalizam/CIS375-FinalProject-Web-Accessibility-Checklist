@@ -36,6 +36,10 @@
         <button id="downloadButton">Download Results</button>
     </div>
 
+    <footer>
+        <p>&copy; 2023 Web Accessibility Checklist. All rights reserved.</p>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const totalSemanticElements = localStorage.getItem('totalSemanticElements');
@@ -85,7 +89,7 @@
                         <td><Strong>${overallPercentage}%</Strong></td>
                     </tr>
                     <tr>
-                        <td>Description</td>
+                        <td>Comment</td>
                         <td>${description}</td>
                     </tr>
                 </table>`;

@@ -61,14 +61,6 @@ nav ul.nav-links a:focus {
     margin-top: 0px;
 }
 
-footer {
-    background-color: #00274c; 
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    flex-shrink: 0;
-}
-
 /* Improved Button Styles */
 .cta-button {
     display: inline-block;
@@ -123,7 +115,19 @@ div.panel {
     overflow: hidden;
 }
 
-/* Footer Link Styling */
+#videoSection {
+    margin-top: 30px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #00274c; 
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    flex-shrink: 0;
+}
+
 footer a {
     color: #fff;
     text-decoration: none;

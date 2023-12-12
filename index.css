@@ -1,4 +1,10 @@
 /* Index.html */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* this would handle horizontal scroll/whitespace */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -19,18 +25,14 @@ h2{
 }
 
 .submit-button {
-    background-color: #00274c;
+    background-color: #e6ac00;
+    color: #00274c; 
     border-radius: 50px;
-    color: #e6ac00;
     padding: 10px 20px;
+    margin-top: 10px;
     font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    position: absolute;
-    -ms-transform: translateY(-50%);
-    transform: translateX(800%);
+    position: relative;
+    left: 80px;
 }
 
 .text{
@@ -51,7 +53,8 @@ button {
 }
 
 button:hover {
-    background-color: #333; /* Darker color on hover, adjust as needed */
+    background-color: #00274c;
+    color: #e6ac00;
 }
 
 .text input[type="radio"] {
@@ -111,4 +114,21 @@ nav ul.nav-links a:focus {
     line-height: 24px;
     text-align: center;
     cursor: pointer;
+}
+
+footer {
+    background-color: #00274c; 
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
